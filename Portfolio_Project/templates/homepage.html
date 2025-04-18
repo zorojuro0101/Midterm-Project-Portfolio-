@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1366, user-scalable=no">
+
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/static/homepage.css">
+</head>
+
+<body>
+    <div class="hero-container" id="heroContainer">
+        <video autoplay muted loop id="heroVideo" class="hero-video">
+            <source src="/img/vid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-text" id="heroText">.PNG Profile</div>
+        <div class="gradient-overlay" id="gradientOverlay"></div>
+    </div>
+    
+    <div class="quote-container" id="quoteContainer">
+        
+        <p class="quote-text" id="quoteText">"Technology is best when it brings people together." <br><span class="quote-author">— Matt Mullenweg</span></p>
+    </div>
+    
+    <div class="spacer"></div> <!-- Spacer to enable scrolling -->
+    
+    
+
+    <!-- Wrapper to hold gallery and info -->
+    <div class="gallery-wrapper" id="galleryWrapper">
+        <!-- Horizontal Image Gallery -->
+        <div class="gallery-container" id="galleryContainer">
+            <img src="/img/1_1.jpg" alt="Image 1" class="gallery-img" onclick="showInfo(1, this)" data-id="1">
+            <img src="/img/2_1.jpg" alt="Image 2" class="gallery-img" onclick="showInfo(2, this)" data-id="2">
+            <img src="/img/3_1.jpg" alt="Image 3" class="gallery-img" onclick="showInfo(3, this)" data-id="3">
+            <img src="/img/4_1.jpg" alt="Image 4" class="gallery-img" onclick="showInfo(4, this)" data-id="4">
+            <img src="/img/5_1.jpg" alt="Image 5" class="gallery-img" onclick="showInfo(5, this)" data-id="5">
+        </div>
+        <!-- Info Container (Hidden Initially) -->
+        <!-- Info Container with Buttons -->
+        <div class="info-container hidden" id="infoContainer">
+            <!-- Buttons at the Top -->
+            <div class="info-buttons">
+                <button onclick="showContent('personal', this, currentSelected ? currentSelected.dataset.id : 1)">About me</button>
+                <button onclick="showContent('skills', this, currentSelected ? currentSelected.dataset.id : 1)">Skills</button>
+                <button onclick="showContent('contacts', this, currentSelected ? currentSelected.dataset.id : 1)">Contacts</button>
+            </div>
+        
+            <!-- Default Info Content -->
+            <h2 id="infoTitle">Image Title</h2>
+            <p id="infoText">Image description will appear here.</p>
+        </div>
+        
+        
+
+    </div>
+
+    <script src="homepage.js"></script>
+</body>
+
+</html>
