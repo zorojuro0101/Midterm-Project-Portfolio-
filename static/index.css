@@ -1,0 +1,408 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color:#000000;
+    overflow-x: hidden;
+    background: black; /* Default black background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease-in-out, background 0.5s ease-in-out;
+}
+
+/* Reset background to black when no image is selected */
+body.default-bg {
+    background: black; /* Return to black when no image is selected */
+}
+
+
+/* Hero video background */
+.hero-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    transition: transform 1s ease-out;
+}
+
+/* Hero container to hold video and text */
+.hero-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Gradient overlay to fade out to black */
+.gradient-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, black 100%);
+    pointer-events: none;
+    opacity: 0; /* Start fully transparent */
+    transition: opacity 0.2s ease-out;
+}
+
+.hero-text {
+    position: absolute;
+    color: rgb(255, 251, 251);
+    font-size: 4.3rem;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+    margin: 1rem; /* optional padding from top and left edges */
+    transition: all 0.5s ease-out;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+
+
+.content {
+    position: relative;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 20px;
+    z-index: 2;
+}
+
+.spacer {
+    height: 100vh; /* Ensures scrolling works */
+}
+
+/* Shrink text when scrolling */
+.shrink-text {
+    font-size: 2rem;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    transform: scale(0.5) translate(0, 0);
+    transition: all 0.5s ease-out;
+}
+
+/* Bring text back to the center smoothly */
+.reset-text {
+    position: absolute;
+    font-size: 6rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease-out;
+}
+
+/* Quote container styles */
+.quote-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 200px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.quote-text {
+    font-size: 1.8rem;
+    color: white;
+    font-style: italic;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.quote-author {
+    font-size: 1.5rem;
+    color: #ccc;
+}
+
+/* Show quote when scrolled down */
+.show-quote {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Content Section */
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px auto;
+    max-width: 1200px;
+}
+
+
+
+/* Wrapper for gallery and info */
+/* Wrapper for gallery and info */
+/* Wrapper for gallery and info */
+.gallery-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    height: 100vh; /* Full screen height */
+    width: 100vw; /* Full screen width */
+    margin-top: 0;
+    position: relative;
+    background: black; /* Default background */
+    background-size: cover; /* Cover without stretching */
+    background-position: left center; /* Crop to the left */
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease-in-out; /* Only transition background-image */
+    overflow: hidden; /* Prevent scroll */
+    ;
+}
+
+
+
+/* Container for gallery */
+.gallery-container {
+    display: flex;
+    gap: 60px;
+    margin-left: 175px;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+    margin-bottom: 100px;
+    margin-left: 600px;
+    
+}
+
+/* Style for 1 column layout in grid */
+.gallery-container.grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Force 1 column */
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 0;
+    margin-left: 20px;
+    transition: all 0.5s ease-in-out;
+    margin-top: 100px;;
+    margin-left: 70px;
+    margin-right: 450px;
+}
+
+
+/* Larger Gallery Images */
+.gallery-img {
+    width: 180px; /* Fixed width */
+    height: 180px; /* Fixed height */
+    cursor: pointer;
+    border-radius: 12px;
+    object-fit: cover; /* Maintain aspect ratio and fill the area */
+    object-position: left; /* Crop and align to the left */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+    border: 4px solid transparent;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
+
+
+/* Keep original size when in grid */
+.gallery-container.grid .gallery-img {
+    width: 100px; /* Restore original size */
+    height: 100px; /* Keep aspect ratio consistent */
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Hover effect for normal view */
+.gallery-img:hover {
+    transform: scale(1.2); /* Enlarge on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect when in grid */
+.gallery-container.grid .gallery-img:hover {
+    transform: scale(1.1); /* Slightly smaller zoom in grid */
+}
+
+/* Keep the selected image slightly bigger even after clicking */
+.gallery-img.selected {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(250, 250, 250, 0.6);
+    border: 4px solid #ffffff;
+}
+
+/* Fade in when images are visible */
+.gallery-img.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delay for images */
+.gallery-img:nth-child(1) {
+    transition-delay: 0.3s;
+}
+.gallery-img:nth-child(2) {
+    transition-delay: 0.5s;
+}
+.gallery-img:nth-child(3) {
+    transition-delay: 0.7s;
+}
+.gallery-img:nth-child(4) {
+    transition-delay: 0.9s;
+}
+.gallery-img:nth-child(5) {
+    transition-delay: 1.1s;
+}
+
+/* Hover effect */
+/* Add smooth hover zoom effect */
+.gallery-img:hover {
+    transform: scale(1.2); /* Increase the size when hovered */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for effect */
+}
+
+/* Keep the selected image slightly bigger even after clicking */
+.gallery-img.selected {
+    transform: scale(1.1); /* Slightly smaller than hover effect */
+    box-shadow: 0 0 15px rgba(250, 250, 250, 0.6);
+    border: 4px solid #ffffff;
+}
+
+/* Optional: Add a smoother effect when hovering */
+.gallery-img:not(.selected):hover {
+    transform: scale(1.2); /* Make non-selected images grow bigger */
+    border: 4px solid #e6e6e6; /* Optional: Light border for contrast */
+}
+
+
+/* Info Container (Hidden by default) */
+/* Info Container with Glassmorphism Effect */
+.info-container {
+    padding: 20px;
+    width: 700px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    backdrop-filter: blur(6px); /* Blur effect */
+    -webkit-backdrop-filter: blur(12px); /* For Safari support */
+    text-align: left; /* Align all text inside to the left */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(30px);
+    transition: all 0.5s ease-in-out;
+    margin-right: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border for glass effect */
+}
+
+/* Show the info container when clicked */
+.info-container.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Style for the title */
+#infoTitle {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left; /* Title aligned to the left */
+    margin-left: 40px;
+    margin-top: 70px;
+}
+
+/* Style for the description text */
+#infoText {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: left; /* Text aligned to the left */
+    margin-left: 40px;
+    margin-right: 20px;
+    margin-top: 50px;
+}
+
+
+/* Move everything to the left when clicked */
+.gallery-wrapper.grid {
+    justify-content: flex-start;
+    gap: 40px;
+    margin-left: 30px;
+    transition: all 0.5s ease-in-out;
+    background: black;
+}
+
+/* Add animation to move gallery to the left */
+.gallery-container.animate-left {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+}
+
+/* Delay animation to appear in grid */
+.gallery-container.grid.animate-left {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.8s ease-in-out;
+}
+
+/* Media wrapper to keep images aligned */
+.media-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+
+
+
+
+
+
+
+/* Button Container */
+.info-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+/* Large Button Style with Glassmorphism */
+.info-buttons button {
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1); /* Transparent effect */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px); /* Glass blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect */
+.info-buttons button:hover {
+    background: rgba(255, 255, 255, 0.3); /* Brighter on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Highlight the active button */
+.info-buttons button.active {
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px);
+}
